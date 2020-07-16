@@ -1,0 +1,26 @@
+{
+  "name": "deexdex-serializer",
+  "version": "0.7.1",
+  "main": "lib",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec yarn build --watch src",
+    "build": "babel src -d lib",
+    "postbuild": "yarn browserify",
+    "browserify": "browserify lib/index.js --standalone deexdex-serializer -o build/deexdex-serializer.js -d",
+    "postbrowserify": "minify build/deexdex-serializer.js -o build/deexdex-serializer.min.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "babel-minify": "^0.5.0",
+    "browserify": "^16.2.3",
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "bytebuffer": "^5.0.1",
+    "deexdex-ecc": "git+https://github.com/thedeex/deexdex-ecc.git"
+  }
+}
